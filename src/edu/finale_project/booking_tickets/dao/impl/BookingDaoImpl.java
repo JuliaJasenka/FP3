@@ -107,7 +107,7 @@ public class BookingDaoImpl implements BookingDao {
 
 	private String prepareForStoring(Booking booking) {
 		return booking.getId() + DELIMITER + booking.getTrainId() + DELIMITER + booking.getUserId() + DELIMITER
-				+ booking.getBookingDate() + DELIMITER + booking.getSeatsNumber() + DELIMITER;
+				+ booking.getBookingDate() + DELIMITER + booking.getSeatsNumber();
 	}
 
 	private Booking convertFromString(String bookingStr) {

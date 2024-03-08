@@ -21,7 +21,7 @@ public class TrainDaoImpl implements TrainDao {
 	@Override
 	public String add(Train entity) throws DaoException {
 		try {
-			DaoHelper.writeFile(prepareForStoring(entity), FILE_NAME, true);
+			DaoHelper.writeFile(prepareForStoring(entity) + '\n', FILE_NAME, true);
 			return entity.getId();
 		} catch (IOException ex) {
 			throw new DaoException("Failed to store the train (ID - " + entity.getId() + ". " + ex.getMessage());
@@ -155,8 +155,7 @@ public class TrainDaoImpl implements TrainDao {
 
 	private String prepareForStoring(Train train) {
 		return train.getId() + DELIMITER + train.getTrainNumber() + DELIMITER + train.getFrom() + DELIMITER
-				+ train.getTo() + DELIMITER + train.getDepartureTime() + DELIMITER + train.getFreeSeats() + DELIMITER
-				+ '\n';
+				+ train.getTo() + DELIMITER + train.getDepartureTime() + DELIMITER + train.getFreeSeats();
 	}
 
 	private Train convertFromString(String trainStr) {
